@@ -1,0 +1,19 @@
+S ./textures/so.xpm
+
+
+F 225,100,0
+EA ./textures/ea.xpm
+WE ./textures/we.xpm
+
+
+
+C 255,30,0
+NO ./textures/no.xpm
+F 220,100,0
+C 225,30,0
+
+111111
+100101
+101001
+1100N1
+111111
