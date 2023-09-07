@@ -6,7 +6,7 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 19:19:55 by hoigag            #+#    #+#             */
-/*   Updated: 2023/09/07 12:45:48 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/07 18:26:46 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,8 @@ int	has_valid_components(t_glob *data)
 
 void	is_map_valid(t_glob *data)
 {
-	// if (!map_has_walls(data))
-	// 	error_log("the map is not surrounded by walls");
-	// if (!has_valid_components(data))
-	// 	error_log("invalid map component");
+	if (!map_has_walls(data))
+		error_log("the map is not surrounded by walls");
+	if (!has_valid_components(data))
+		error_log("invalid map component");
 }
