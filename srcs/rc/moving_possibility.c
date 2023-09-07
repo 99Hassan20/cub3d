@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   moving_possibility.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 17:21:08 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/07 12:32:37 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/07 16:39:29 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3D.h"
+#include "../../cub3D.h"
 
 int	stay_away_from_wall(t_glob *glob, float player_x, float player_y)
 {

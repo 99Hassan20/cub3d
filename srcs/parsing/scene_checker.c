@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   scene_checker.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 12:44:03 by hoigag            #+#    #+#             */
-/*   Updated: 2023/09/07 12:30:41 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/07 18:10:42 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3D.h"
+#include "../../cub3D.h"
 
 int	is_file_name_valid(char *file_name)
 {
@@ -57,6 +57,7 @@ int	get_scene_elements(t_glob *data)
 	i = 0;
 	while (data->map_info[i])
 	{
+		printf("%s\n", data->map_info[i]);
 		pair = ft_split(data->map_info[i], ' ');
 		if (is_element_type_valid(pair[0]) && pair[1])
 		{

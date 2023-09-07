@@ -6,14 +6,14 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:05:02 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/07 16:17:38 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/07 18:54:53 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#include <unistd.h> 
+# include <unistd.h> 
 # include "libft/libft.h"
 #include "/Users/aouchaad/MLX42/include/MLX42/MLX42.h"
 #include <math.h>
@@ -28,15 +28,6 @@
 // # define HEIGHT 1120
 # define MOVE_SPEED 10
 # define ROTATION_SPEED (2 * (M_PI / 180))
-
-// typedef struct s_map
-// {
-// 	char	**the_map;
-// 	// int 	map_num_rows;
-// 	// int		map_num_cols;
-// 	// char	**floor_color;
-// 	char	**ceil_color;
-// }	t_map;
 
 typedef struct s_element
 {

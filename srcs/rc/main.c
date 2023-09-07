@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:08:56 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/07 12:36:23 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/07 18:35:14 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3D.h"
+#include "../../cub3D.h"
 
 void	free_fun(t_glob *glob)
 {
@@ -31,8 +31,9 @@ void	free_fun(t_glob *glob)
 int main(int ac, char **av)
 {
 	t_glob	glob;
-	
+
 	scene_parser(&glob, av[1], ac);
+	// printf("all good\n");
 	// fill_map(&glob);
 	init_func(&glob);
 	glob.mlx = mlx_init(glob.width, glob.height, "cub3D", false);
