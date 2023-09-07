@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 17:11:49 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/07 12:32:24 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/07 16:39:29 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3D.h"
+#include "../../cub3D.h"
 
 void	draw_line(t_glob *glob, float end_x, float end_y, int color)
 {

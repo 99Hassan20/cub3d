@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:53:22 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/07 12:32:15 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/07 18:41:11 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3D.h"
+#include "../../cub3D.h"
 
 int	is_wall(t_glob *glob, float end_x, float end_y)
 {
 	float	x;
 	float	y;
 
+	if (end_x < 0 || end_x >= glob->width || end_y < 0 || end_y >= glob->height)
+		return (1);
 	x = floor(end_x / BLOCK_ZIZE);
 	y = floor(end_y / BLOCK_ZIZE);
-	if (x < 0 || x >= glob->width || y < 0 || y >= glob->height)
-		return (1);
-	if (glob->map[(int)y][(int)x] == '1')
+	if (glob->map[(int)y][(int)x] && glob->map[(int)y][(int)x] == '1')
 		return (1);
 	return (0); 
 }

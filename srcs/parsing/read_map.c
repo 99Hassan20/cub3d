@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 16:04:47 by hoigag            #+#    #+#             */
-/*   Updated: 2023/09/07 12:44:11 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/07 18:13:32 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3D.h"
+#include "../../cub3D.h"
 
 void	get_map_data(t_glob *data)
 {
@@ -27,10 +27,11 @@ void	get_map_data(t_glob *data)
 		line = get_line(fd);
 		if (!line)
 			break ;
-		if (line[0] && counter >= MAP_ELEMENTS)
+		if (!is_empty_line(line) && counter >= MAP_ELEMENTS)
 			data->map_height++;
-		if (line[0] && counter < MAP_ELEMENTS)
+		if (!is_empty_line(line) && counter < MAP_ELEMENTS)
 		{
+			// printf("%d %s\n", counter, line);
 			data->map_info[counter] = ft_strdup(line);
 			counter++;
 		}
@@ -53,9 +54,9 @@ void	get_map(t_glob *data)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		// remove_new_line(&line);
-		// if (is_empty_line(line) && counter >= MAP_ELEMENTS + 1)
-		// 	error_log("empty line in the middle of the map");
+		remove_new_line(&line);
+		if (is_empty_line(line) && counter > MAP_ELEMENTS)
+			error_log("Invalid map");
 		if (!is_empty_line(line) && counter >= MAP_ELEMENTS)
 			data->map[counter - MAP_ELEMENTS] = ft_strdup(line);
 		if (!is_empty_line(line))

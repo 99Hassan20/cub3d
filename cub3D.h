@@ -6,20 +6,20 @@
 /*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:05:02 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/07 15:56:33 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/09/07 16:17:17 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#include <unistd.h> 
+# include <unistd.h> 
 # include "libft/libft.h"
-#include "/Users/hoigag/MLX42/MLX42.h"
-#include <math.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <limits.h>
+# include "/Users/hoigag/MLX42/MLX42.h"
+# include <math.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <limits.h>
 # include <fcntl.h>
 
 # define BLOCK_ZIZE 80
@@ -28,15 +28,6 @@
 // # define HEIGHT 1120
 # define MOVE_SPEED 10
 # define ROTATION_SPEED (2 * (M_PI / 180))
-
-// typedef struct s_map
-// {
-// 	char	**the_map;
-// 	// int 	map_num_rows;
-// 	// int		map_num_cols;
-// 	// char	**floor_color;
-// 	char	**ceil_color;
-// }	t_map;
 
 typedef struct s_element
 {

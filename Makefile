@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = #-Wall -Werror -Wextra -fsanitize=address -g
+CFLAGS =  #-fsanitize=address -g
 GLFW = $(shell brew --prefix glfw)
 FRAMEWORKS = /Users/hoigag/MLX42/libmlx42.a -Iinclude -lglfw -L $(GLFW)/lib/ -framework Cocoa -framework OpenGL -framework IOKit
 
@@ -8,8 +8,8 @@ LIBFT_OBJS = $(LIBFT_SRCS:.c=.o)
 
 NAME = cub3D
 
-SRCS_PARSING= $(addprefix ./srcs/, map_checker.c read_map.c parser_utils.c scene_checker.c scene_elements.c parser_utils2.c)
-SRCS_RC	=	$(addprefix ./srcs/,  main.c \
+SRCS_PARSING= $(addprefix ./srcs/parsing/, map_checker.c read_map.c parser_utils.c scene_checker.c scene_elements.c parser_utils2.c)
+SRCS_RC	=	$(addprefix ./srcs/rc/,  main.c \
 			utils.c \
 			utils2.c \
 			utils3.c \
