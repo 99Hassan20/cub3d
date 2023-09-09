@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vertical_intersept.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:34:46 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/07 16:39:29 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/09/09 19:00:41 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	look_for_wall_hit(t_glob *glob, t_vars *vars, \
 float *wallhitx, float *wallhity)
 {
+	vars->fouandwall = 0;
 	while (vars->nextx >= 0 && vars->nextx < glob->width && \
 	vars->nexty >= 0 && vars->nexty < glob->height)
 	{
@@ -32,12 +33,6 @@ float *wallhitx, float *wallhity)
 		}
 	}
 }
-
-/*
-this function finds the vertical intercection of the casted ray whithe the vertical grid lines
-and calculate the distance between the player and the last intersection , if there is no intercection
-the function returns INT_MAX
-*/
 
 float	vertical_intercept(t_glob *glob, float ray_angle, \
 float *wallhitx, float *wallhity)
@@ -58,11 +53,8 @@ float *wallhitx, float *wallhity)
 		vars.ystep *= -1;
 	if (ray_facing_down(ray_angle) && vars.ystep < 0)
 		vars.ystep *= -1;
-	/*substract one pixel to force the hit position to be inside the cell*/
 	if (!ray_facing_right(ray_angle))
 		vars.var = 1;
-	/*increment xstep and ystep antill i fouand a wall*/
-	vars.fouandwall = 0;
 	vars.nextx = vars.xintercept;
 	vars.nexty = vars.yintercept;
 	look_for_wall_hit(glob, &vars, wallhitx, wallhity);

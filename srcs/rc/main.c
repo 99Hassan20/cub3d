@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:08:56 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/07 18:35:14 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/09/09 19:24:50 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3D.h"
 
-void	free_fun(t_glob *glob)
+void	free_func(t_glob *glob)
 {
 	int		i;
 
@@ -25,24 +25,23 @@ void	free_fun(t_glob *glob)
 		free(glob->elements[i].value);
 		i++;
 	}
+	free(glob->rays_long);
 	free(glob->elements);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_glob	glob;
 
 	scene_parser(&glob, av[1], ac);
-	// printf("all good\n");
-	// fill_map(&glob);
 	init_func(&glob);
 	glob.mlx = mlx_init(glob.width, glob.height, "cub3D", false);
 	glob.image = mlx_new_image(glob.mlx, glob.width, glob.height);
-	draw_mini_map(&glob);
+	draw_map(&glob);
 	mlx_image_to_window(glob.mlx, glob.image, 0, 0);
 	mlx_loop_hook(glob.mlx, key_handler, &glob);
 	mlx_loop(glob.mlx);
 	mlx_terminate(glob.mlx);
-	free_fun(&glob);
-	return 0;
-} 
+	free_func(&glob);
+	return (0);
+}

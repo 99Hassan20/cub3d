@@ -6,7 +6,7 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 16:04:47 by hoigag            #+#    #+#             */
-/*   Updated: 2023/09/07 18:54:20 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/09 19:14:33 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	get_map_data(t_glob *data)
 			data->map_height++;
 		if (!is_empty_line(line) && counter < MAP_ELEMENTS)
 		{
-			// printf("%d %s\n", counter, line);
 			data->map_info[counter] = ft_strdup(line);
 			counter++;
 		}

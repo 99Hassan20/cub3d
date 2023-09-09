@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moving_possibility.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 17:21:08 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/07 16:39:29 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/09/09 18:50:17 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,24 @@ int	stay_away_from_wall(t_glob *glob, float player_x, float player_y)
 	return (1);
 }
 
+static void	left_right(t_glob *glob, int key, float *player_x, float *player_y)
+{
+	if (key == MLX_KEY_A)
+	{
+		(*player_x) -= cos((glob->vue_angle + \
+		(90 * (M_PI / 180)))) * MOVE_SPEED;
+		(*player_y) -= sin((glob->vue_angle + \
+		(90 * (M_PI / 180)))) * MOVE_SPEED; 
+	}
+	else if (key == MLX_KEY_D)
+	{
+		(*player_x) += cos((glob->vue_angle + \
+		(90 * (M_PI / 180)))) * MOVE_SPEED;
+		(*player_y) += sin((glob->vue_angle + \
+		(90 * (M_PI / 180)))) * MOVE_SPEED; 
+	}
+}
+
 int	can_move(t_glob *glob, int key)
 {
 	float	player_x;
@@ -43,16 +61,17 @@ int	can_move(t_glob *glob, int key)
 
 	player_x = glob->start_x;
 	player_y = glob->start_y;
-	if (key == MLX_KEY_UP)
+	if (key == MLX_KEY_W)
 	{
 		player_x += cos(glob->vue_angle) * MOVE_SPEED;
 		player_y += sin(glob->vue_angle) * MOVE_SPEED;
 	}
-	else if (key == MLX_KEY_DOWN)
+	else if (key == MLX_KEY_S)
 	{
 		player_x -= cos(glob->vue_angle) * MOVE_SPEED;
 		player_y -= sin(glob->vue_angle) * MOVE_SPEED;
 	}
+	left_right(glob, key, &player_x, &player_y);
 	if (stay_away_from_wall(glob, player_x, player_y) == 0)
 		return (0);
 	return (1);

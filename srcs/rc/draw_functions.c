@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 17:11:49 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/07 16:39:29 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/09/09 19:39:06 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ void	draw_line(t_glob *glob, float end_x, float end_y, int color)
 	vars.y_pixel = glob->start_y;
 	while (i <= vars.steps)
 	{
-		mlx_put_pixel(glob->image, (0.2 * vars.x_pixel), \
-		(0.2 * vars.y_pixel), color);
+		if (vars.x_pixel >= 0 && vars.x_pixel < glob->width \
+		&& vars.y_pixel >= 0 && vars.y_pixel < glob->height)
+			mlx_put_pixel(glob->image, (vars.x_pixel * 0.2), \
+			(vars.y_pixel * 0.2), color);
 		vars.x_pixel += vars.x_inc;
 		vars.y_pixel += vars.y_inc;
 		i++;
@@ -68,7 +70,8 @@ void	draw_sky(t_glob *glob)
 		j = 0;
 		while (j < glob->width)
 		{
-			mlx_put_pixel(glob->image, j, i, 0x25417896);
+			mlx_put_pixel(glob->image, j, i, get_rgba(glob->ceiling.red, \
+			glob->ceiling.green, glob->ceiling.blue, 255));
 			j++;
 		}
 		i++;
@@ -86,14 +89,15 @@ void	draw_floor(t_glob *glob)
 		j = 0;
 		while (j < glob->width)
 		{
-			mlx_put_pixel(glob->image, j, i, 0x99774455);
+			mlx_put_pixel(glob->image, j, i, get_rgba(glob->floor.red, \
+			glob->floor.green, glob->floor.blue, 255));
 			j++;
 		}
 		i++;
 	}
 }
 
-void	draw_map(t_glob *glob)
+void	draw_minimap(t_glob *glob)
 {
 	int	i;
 	int	j;
@@ -107,7 +111,7 @@ void	draw_map(t_glob *glob)
 		{
 			if ((glob->map)[i][j] == '1')
 				draw_rect(i, j, 0x838996, glob);
-			else
+			else if ((glob->map)[i][j] != ' ')
 				draw_rect(i, j, 0xD5D6EA, glob);
 			j++;
 		}

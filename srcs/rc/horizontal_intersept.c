@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   horizontal_intersept.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoigag <hoigag@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 13:42:24 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/07 16:39:29 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/09/09 18:34:41 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	look_for_wall_hit(t_glob *glob, t_vars *vars, \
 float *wallhitx, float *wallhity)
 {
+	vars->fouandwall = 0;
 	while (vars->nextx >= 0 && vars->nextx < glob->width \
 	&& vars->nexty >= 0 && vars->nexty < glob->height)
 	{
@@ -32,12 +33,6 @@ float *wallhitx, float *wallhity)
 		}
 	}
 }
-
-/*
-this function finds the horiz intercection of the casted ray whithe the horiz grid lines
-and calculate the distance between the player and the last intersection , if there is no intercection
-the function returns INT_MAX
-*/
 
 float	horizontal_intercept(t_glob *glob, float ray_angle, \
 float *wallhitx, float *wallhity)
@@ -59,12 +54,9 @@ float *wallhitx, float *wallhity)
 		vars.xstep *= -1;
 	vars.nextx = vars.xintercept;
 	vars.nexty = vars.yintercept;
-	/*substract one pixel to force the hit position to be inside the cell*/
 	vars.var = 0;
 	if (!ray_facing_down(ray_angle))
 		vars.var = 1;
-	/*increment xstep and ystep antill i fouand a wall*/
-	vars.fouandwall = 0;
 	look_for_wall_hit(glob, &vars, wallhitx, wallhity);
 	if (vars.fouandwall)
 		return (distance(glob->start_x, (*wallhitx), \
