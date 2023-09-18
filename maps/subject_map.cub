@@ -1,8 +1,8 @@
-S ./textures/so.xpm
+S /Users/aouchaad/Desktop/pics/redbrick.png
 
-EA ./textures/ea.xpm
-WE ./textures/we.xpm
-NO ./textures/no.xpm
+EA /Users/aouchaad/Desktop/pics/eagle.png
+WE /Users/aouchaad/Desktop/pics/greystone.png
+NO /Users/aouchaad/Desktop/pics/colorstone.png
 
 
 
