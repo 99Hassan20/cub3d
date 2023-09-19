@@ -6,7 +6,7 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:53:22 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/18 13:20:50 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:37:43 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	is_wall(t_glob *glob, float end_x, float end_y)
 	return (0); 
 }
 
-int	get_color_from_image(int x, int y, mlx_texture_t *texture)
+int	get_color_from_textrs(int x, int y, mlx_texture_t *texture)
 {
 	int i;
 	i = (x * 4) + ((y * 4) * texture->width);
@@ -102,7 +102,7 @@ void	draw_wall(t_glob *glob, float wall_height, t_ray ray)
 			// printf("texturex = %f\n", textur_x);
 			// printf("texturey = %f\n", textur_y);
 			mlx_put_pixel(glob->image, (glob->num_rays - (ray.index + 1)), \
-			starty, get_color_from_image(textur_x, textur_y, shoose_texture(ray, glob)));
+			starty, get_color_from_textrs(textur_x, textur_y, shoose_texture(ray, glob)));
 	
 		starty++;
 		textur_y += textur_inc;

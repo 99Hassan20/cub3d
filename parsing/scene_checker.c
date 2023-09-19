@@ -6,7 +6,7 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 12:44:03 by hoigag            #+#    #+#             */
-/*   Updated: 2023/09/18 13:09:26 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:32:37 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int	get_scene_elements(t_glob *data)
 	i = 0;
 	while (data->map_info[i])
 	{
-		printf("%s\n", data->map_info[i]);
 		pair = ft_split(data->map_info[i], ' ');
 		if (is_element_type_valid(pair[0]) && pair[1])
 		{

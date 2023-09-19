@@ -6,7 +6,7 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 11:24:00 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/18 11:25:18 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:52:55 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	free_func(t_glob *glob)
 		free(glob->elements[i].value);
 		i++;
 	}
-	// free(glob->rays_long);
+	free(glob->ray);
 	free(glob->elements);
 }
 
@@ -43,6 +43,8 @@ int	main(int ac, char **av)
 	mlx_loop_hook(glob.mlx, key_handler, &glob);
 	mlx_loop(glob.mlx);
 	delete_textures(&glob);
+	mlx_delete_image(glob.mlx, glob.image);
+	mlx_close_window(glob.mlx);
 	mlx_terminate(glob.mlx);
 	free_func(&glob);
 	return (0);

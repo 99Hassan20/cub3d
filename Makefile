@@ -12,7 +12,7 @@ LIBFT_SRCS = $(addprefix libft/, ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c f
 PARSING_SRCS= $(addprefix parsing/, map_checker.c read_map.c parser_utils.c scene_checker.c scene_elements.c parser_utils2.c)
 # PARSING_OBJS = $(PARSING_SRCS:.c=.o)
 
-MANDATORY_SRCS	=	$(addprefix mandatory/,  main.c utils.c utils2.c utils3.c horizontal_intersept.c vertical_intersept.c ray_casting.c draw_functions.c key_handling.c)
+MANDATORY_SRCS	=	$(addprefix mandatory/,  main.c utils.c textures_funcs.c moving_possibility.c utils2.c utils3.c horizontal_intersept.c vertical_intersept.c ray_casting.c draw_functions.c key_handling.c)
 # MANDATORY_OBJS = $(MANDATORY_SRCS:.c=.o)
 
 BONUS_SRCS	=	$(addprefix bonus/,  main_bonus.c utils_bonus.c utils2_bonus.c utils3_bonus.c horizontal_intersept_bonus.c vertical_intersept_bonus.c ray_casting_bonus.c draw_functions_bonus.c key_handling_bonus.c moving_possibility_bonus.c)

@@ -6,7 +6,7 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:05:02 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/18 13:35:00 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:58:24 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,11 @@ typedef struct s_vars
 	float	y_pixel;
 	int		var;
 	int		fouandwall;
+	float	starty;
+	float	textur_x;
+	float	textur_y;
+	float	textur_inc;
+	float	walltoppixel;
 }	t_vars;
 
 typedef struct s_glob
@@ -92,7 +97,6 @@ typedef struct s_glob
 	mlx_image_t	*image;
 	t_ray		*ray;
 	t_textrs	txtrs;
-	char		**my_textur;
 	float		rotation_speed;
 	float		start_x;
 	float		start_y;
@@ -102,8 +106,6 @@ typedef struct s_glob
 	float		rays_angle;
 	int			num_rays;
 	int 		old_mouse_posx;
-	// float		*rays_long;
-	// char		*ray_intesection;
 	float		angle_incr;
 	char		**map;
 	int			width;
@@ -167,5 +169,6 @@ int get_a(int rgba);
 void	creat_textures(t_glob *glob);
 void	delete_textures(t_glob *glob);
 mlx_texture_t	*shoose_texture(t_ray ray, t_glob *glob);
+int	get_color_from_textrs(int x, int y, mlx_texture_t *texture);
 
 #endif
