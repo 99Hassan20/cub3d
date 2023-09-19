@@ -6,7 +6,7 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 11:26:34 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/18 11:27:43 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:46:16 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	draw_map(t_glob *glob)
 	draw_sky(glob);
 	draw_floor(glob);
 	cast_all_rays(glob);
-	// draw_minimap(glob);
-	// put_player(glob);
-	// end_point(glob, 30, glob->vue_angle);
-	// draw_line(glob, glob->end_x, glob->end_y, 0xFF000000);
+	draw_minimap(glob);
+	put_player(glob);
+	end_point(glob, 30, glob->vue_angle);
+	draw_line(glob, glob->end_x, glob->end_y, 0xFF000000);
 	mlx_image_to_window(glob->mlx, glob->image, 0, 0);
 }
 

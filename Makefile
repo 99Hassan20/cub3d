@@ -57,4 +57,7 @@ re: fclean all
 run: all
 	./${NAME} maps/subject_map.cub
 
+runb: $(NAME_BONUS)
+	./$(NAME_BONUS) maps/subject_map.cub
+
 .PHONY: clean fclean all re
