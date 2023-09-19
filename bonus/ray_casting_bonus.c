@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:53:22 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/19 16:37:43 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:32:06 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,26 @@ int	is_wall(t_glob *glob, float end_x, float end_y)
 
 int	get_color_from_textrs(int x, int y, mlx_texture_t *texture)
 {
-	int i;
+	int	i;
+
 	i = (x * 4) + ((y * 4) * texture->width);
-	// return(get_rgba(get_r(texture->pixels[i]), get_g(texture->pixels[i + 1]), \
+	// return(get_rgba(get_r(texture->pixels[i]), get_g(texture->pixels[i + 1]),
 	// get_b(texture->pixels[i + 2]), get_a(texture->pixels[i + 3])));
-	return(texture->pixels[i] << 24 | \
-	texture->pixels[i + 1] << 16 | texture->pixels[i + 2] << 8 | texture->pixels[i + 3]);
+	return (texture->pixels[i] << 24
+		| texture->pixels[i + 1] << 16
+		| texture->pixels[i + 2] << 8 | texture->pixels[i + 3]);
 }
 
 mlx_texture_t	*shoose_texture(t_ray ray, t_glob *glob)
 {
-	if (ray.first_hit == '2' && (ray.ray_angle < M_PI_2 || ray.ray_angle > (3 * M_PI_2)))
+	if (ray.first_hit == '2'
+		&& (ray.ray_angle < M_PI_2 || ray.ray_angle > (3 * M_PI_2)))
 		return (glob->txtrs.ea_texture);
-	else if (ray.first_hit == '2' && (ray.ray_angle >= M_PI_2 && ray.ray_angle <= (3 * M_PI_2)))
+	else if (ray.first_hit == '2'
+		&& (ray.ray_angle >= M_PI_2 && ray.ray_angle <= (3 * M_PI_2)))
 		return (glob->txtrs.we_texture);
-	else if (ray.first_hit == '1' && (ray.ray_angle >= 0 && ray.ray_angle <= M_PI))
+	else if (ray.first_hit == '1'
+		&& (ray.ray_angle >= 0 && ray.ray_angle <= M_PI))
 		return (glob->txtrs.no_texture);
 	return (glob->txtrs.so_texture);
 }
@@ -54,13 +59,14 @@ mlx_texture_t	*shoose_texture(t_ray ray, t_glob *glob)
 void	draw_wall(t_glob *glob, float wall_height, t_ray ray)
 {
 	float	starty;
-	float textur_x;
-	float textur_y;
-	float textur_inc;
-	float walltoppixel;
-	int this = 0;
-	// int factor;
+	float	textur_x;
+	float	textur_y;
+	float	textur_inc;
+	float	walltoppixel;
+	int		this = 0;
 
+	this = 0;
+	// int factor;
 	textur_inc = (float)BLOCK_ZIZE / wall_height;
 	// textur_y = 0;
 	// if (ray.first_hit == 2)
@@ -78,9 +84,9 @@ void	draw_wall(t_glob *glob, float wall_height, t_ray ray)
 	// if (textur_x < 0)
 	// 	textur_x = 0;
 	//////////////////////////////////////////////////////////////
-	if(ray.first_hit == '2')
+	if (ray.first_hit == '2')
 	{
-		this = 1;	
+		this = 1;
 		textur_x = (int)ray.vert_intercept_y % BLOCK_ZIZE;
 	}
 	else
@@ -89,7 +95,8 @@ void	draw_wall(t_glob *glob, float wall_height, t_ray ray)
 		textur_x = (int)ray.hor_intercept_x % BLOCK_ZIZE;
 	}
 	///////////////////////////////////////////////////////////////
-	starty = walltoppixel = ((float)HEIGHT / 2) - ((float)wall_height / 2); 
+	walltoppixel = ((float)HEIGHT / 2) - ((float)wall_height / 2); 
+	starty = walltoppixel; 
 	if (starty < 0)
 		starty = 0;
 	while (starty <= ((float)HEIGHT / 2) + ((float)wall_height / 2)) 
@@ -101,9 +108,8 @@ void	draw_wall(t_glob *glob, float wall_height, t_ray ray)
 			break ;
 			// printf("texturex = %f\n", textur_x);
 			// printf("texturey = %f\n", textur_y);
-			mlx_put_pixel(glob->image, (glob->num_rays - (ray.index + 1)), \
-			starty, get_color_from_textrs(textur_x, textur_y, shoose_texture(ray, glob)));
-	
+		mlx_put_pixel(glob->image, (glob->num_rays - (ray.index + 1)), starty,
+			get_color_from_textrs(textur_x, textur_y, shoose_texture(ray, glob)));
 		starty++;
 		textur_y += textur_inc;
 	}

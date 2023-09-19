@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handling_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 17:29:22 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/18 13:20:23 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:29:05 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ void	key_handler(void *param)
 	mouse_posx = -1;
 	mouse_posy = -1;
 	mlx_get_mouse_pos(glob->mlx, &mouse_posx, &mouse_posy);
-	if (mouse_posx >= 0 && mouse_posy >= 0 && mouse_posx <= WIDTH && mouse_posy <= HEIGHT) 
+	if (mouse_posx >= 0 && mouse_posy >= 0
+		&& mouse_posx <= WIDTH && mouse_posy <= HEIGHT) 
 	{
 		if (mouse_posx > glob->old_mouse_posx)
 			glob->vue_angle += (3 * (M_PI / 180));

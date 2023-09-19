@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_functions_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 17:11:49 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/19 15:47:22 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:07:02 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ void	draw_minimap(t_glob *glob)
 		{
 			if ((glob->map)[i][j] == '1')
 				draw_rect(i, j, 0x838996, glob);
+			else if ((glob->map)[i][j] == 'D')
+				draw_rect(i, j, 0x124595, glob);
 			else if ((glob->map)[i][j] != ' ')
 				draw_rect(i, j, 0xD5D6EA, glob);
 			j++;
