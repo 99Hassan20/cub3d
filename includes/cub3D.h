@@ -6,7 +6,7 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:05:02 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/20 16:16:35 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/20 17:15:05 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct s_textrs
 	mlx_texture_t	*we_texture;
 	mlx_texture_t	*so_texture;
 	mlx_texture_t	*no_texture;
+	mlx_texture_t	*closed_door;
+	mlx_texture_t	*opend_door;
 }	t_textrs;
 
 typedef struct s_element
@@ -59,6 +61,7 @@ typedef struct s_ray
 	int		first_hit;
 	float	ray_long;
 	float	ray_angle;
+	int		is_door;
 }	t_ray;
 
 typedef struct s_vars

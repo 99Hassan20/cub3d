@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handling_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 17:29:22 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/19 19:29:05 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/09/20 17:37:23 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,13 @@ void	key_handler(void *param)
 			glob->vue_angle -= (3 * (M_PI / 180));
 		glob->old_mouse_posx = mouse_posx;
 		// glob->vue_angle -= acos((mouse_posx - glob->start_x) / distance(glob->start_x, mouse_posx, glob->start_y, mouse_posy));
+	}
+	if (mlx_is_key_down(glob->mlx, MLX_KEY_Q))
+	{
+		if (glob->door_closed == 1)
+			glob->door_closed = 0;
+		else
+			glob->door_closed = 1;
 	}
 	if (mlx_is_key_down(glob->mlx, MLX_KEY_RIGHT))
 		glob->vue_angle += glob->rotation_speed;

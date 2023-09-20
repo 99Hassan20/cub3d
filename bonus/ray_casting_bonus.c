@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:53:22 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/19 19:32:06 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/09/20 20:01:11 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	is_wall(t_glob *glob, float end_x, float end_y)
 		return (1);
 	if (x >= ft_strlen(glob->map[(int)y]))
 		return (1);
-	if (glob->map[(int)y][(int)x] == '1')
+	if (glob->map[(int)y][(int)x] == '1' || glob->map[(int)y][(int)x] == 'D')
 		return (1);
 	return (0); 
 }
@@ -44,7 +44,14 @@ int	get_color_from_textrs(int x, int y, mlx_texture_t *texture)
 
 mlx_texture_t	*shoose_texture(t_ray ray, t_glob *glob)
 {
-	if (ray.first_hit == '2'
+	if (ray.is_door == 1)
+	{
+		if (glob->door_closed == 1)
+			return (glob->txtrs.closed_door);
+		else
+			return (glob->txtrs.opend_door);
+	}
+	else if (ray.first_hit == '2'
 		&& (ray.ray_angle < M_PI_2 || ray.ray_angle > (3 * M_PI_2)))
 		return (glob->txtrs.ea_texture);
 	else if (ray.first_hit == '2'
@@ -121,8 +128,11 @@ void	creat_textures(t_glob *glob)
 	glob->txtrs.we_texture = mlx_load_png(glob->we);
 	glob->txtrs.so_texture = mlx_load_png(glob->so);
 	glob->txtrs.no_texture = mlx_load_png(glob->no);
+	glob->txtrs.opend_door = mlx_load_png("textures/pics/door_opened64.png");
+	glob->txtrs.closed_door = mlx_load_png("textures/pics/door.png");
 	if (!glob->txtrs.ea_texture || !glob->txtrs.we_texture || \
-		!glob->txtrs.so_texture || !glob->txtrs.no_texture)
+		!glob->txtrs.so_texture || !glob->txtrs.no_texture || \
+		!glob->txtrs.closed_door || !glob->txtrs.opend_door)
 		error_log("fail to load png file");
 }
 
@@ -150,6 +160,60 @@ void	wall_projection(t_glob *glob)
 	}
 }
 
+int	check_door(t_glob *glob, float end_x, float end_y)
+{
+	// float	i;
+	// float	j;
+
+	// if (ray->first_hit == 1)
+	// {
+	// 	if (ray->hor_intercept_x < 0 || ray->hor_intercept_x >= glob->width || \
+	// 			ray->hor_intercept_y < 0 || ray->hor_intercept_y >= glob->height)
+	// 		return;
+	// 	j = floor(ray->hor_intercept_x / BLOCK_ZIZE);
+	// 	i = floor(ray->hor_intercept_y / BLOCK_ZIZE);
+	// }
+	// else
+	// {
+	// 	if (ray->vert_intercept_x < 0 || ray->vert_intercept_x >= glob->width || \
+	// 			ray->vert_intercept_y < 0 || ray->vert_intercept_y >= glob->height)
+	// 		return;
+	// 	j = floor(ray->vert_intercept_x / BLOCK_ZIZE);
+	// 	i = floor(ray->vert_intercept_y / BLOCK_ZIZE);
+	// }
+	// if (i >= glob->map_height)
+	// 	return;
+	// if (j >= (int)ft_strlen(glob->map[(int)i]))
+	// 	return;
+	// if (glob->map[(int)i][(int)j] == 'D')
+	// 	ray->is_door = 1;
+	// else
+	// {
+	// 	// if (i >= glob->map_height)
+	// 	// 	return;
+	// 	if (j + 1 >= (int)ft_strlen(glob->map[(int)i]))
+	// 		return;
+	// 	if (glob->map[(int)i][(int)j + 1] == 'D')
+	// 		ray->is_door = 1;
+	// 	else
+	// 		ray->is_door = 0;
+	// }
+	float	x;
+	float	y;
+
+	if (end_x < 0 || end_x >= glob->width || end_y < 0 || end_y >= glob->height)
+		return (1);
+	x = floor(end_x / BLOCK_ZIZE);
+	y = floor(end_y / BLOCK_ZIZE);
+	if (y >= glob->map_height)
+		return (0);
+	if (x >= ft_strlen(glob->map[(int)y]))
+		return (0);
+	if (glob->map[(int)y][(int)x] == 'D')
+		return (1);
+	return (0); 
+}
+
 void	cast_ray(t_glob *glob, int i)
 {
 	t_vars	vars;
@@ -161,13 +225,24 @@ void	cast_ray(t_glob *glob, int i)
 		glob->ray[i].ray_long = vars.horz_dist * \
 		cosf(glob->ray[i].ray_angle - glob->vue_angle);
 		glob->ray[i].first_hit = '1';
+		glob->ray[i].is_door = check_door(glob, glob->ray[i].hor_intercept_x, \
+									glob->ray[i].hor_intercept_y);
+		if (glob->ray[i].is_door == 0)
+			glob->ray[i].is_door = check_door(glob, glob->ray[i].hor_intercept_x, \
+									glob->ray[i].hor_intercept_y - 1);							
 	}
 	else
 	{
 		glob->ray[i].ray_long = vars.vert_dist * \
 		cosf(glob->ray[i].ray_angle - glob->vue_angle);
 		glob->ray[i].first_hit = '2';
+		glob->ray[i].is_door = check_door(glob, glob->ray[i].vert_intercept_x, \
+										glob->ray[i].vert_intercept_y);
+		if (glob->ray[i].is_door == 0)
+			glob->ray[i].is_door = check_door(glob, glob->ray[i].vert_intercept_x - 1, \
+									glob->ray[i].vert_intercept_y);
 	}
+	// check_door(glob, &(glob->ray[i]));
 }
 
 void	delete_textures(t_glob *glob)
