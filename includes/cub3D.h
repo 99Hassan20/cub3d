@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:05:02 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/19 19:24:32 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/09/20 16:16:35 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <unistd.h> 
 # include "../libft/libft.h"
-# include "/Users/hoigag/MLX42/MLX42.h"
+# include "/Users/aouchaad/MLX42/include/MLX42/MLX42.h"
 # include <math.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -97,6 +97,7 @@ typedef struct s_glob
 	mlx_image_t	*image;
 	t_ray		*ray;
 	t_textrs	txtrs;
+	int			door_closed;
 	float		rotation_speed;
 	float		start_x;
 	float		start_y;

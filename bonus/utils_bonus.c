@@ -6,7 +6,7 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 13:13:47 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/18 13:23:16 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:17:02 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ void	init_func(t_glob *glob)
 	glob->rays_angle = (float)(60 * (M_PI / 180));
 	glob->angle_incr = (float)(60 * (M_PI / 180)) / WIDTH; 
 	glob->rotation_speed = (float)(3 * (M_PI / 180));
-	glob->num_rays = WIDTH; 
+	glob->num_rays = WIDTH;
+	glob->door_closed = 1;
 	// glob->rays_long = malloc (sizeof(float) * glob->width);
 	glob->ray = malloc (sizeof(t_ray) * glob->num_rays);
 	// creat_texture(glob);
