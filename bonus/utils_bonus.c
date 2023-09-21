@@ -6,22 +6,55 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 13:13:47 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/20 16:17:02 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:06:23 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+void	put_gun(t_glob *glob, mlx_image_t **img)
+{
+	int	i;
+	int	j;
+	int	color;
+
+	i = 0;
+	glob->txtrs.gun_txtr = mlx_load_png("textures/pics/gun01.png");
+	if (!glob->txtrs.gun_txtr)
+		error_log("faild to load gun image");
+	while (i < HEIGHT && i < (int)glob->txtrs.gun_txtr->height)
+	{
+		j = 0;
+		while (j < WIDTH && j < (int)glob->txtrs.gun_txtr->width)
+		{
+			color = get_color_from_textrs(j, i, glob->txtrs.gun_txtr);
+			if (color != 0)
+				mlx_put_pixel(*img, j, i, color);
+			j++;
+		}
+		i++;
+	}
+}
+
 void	draw_map(t_glob *glob)
 {
-	draw_sky(glob);
-	draw_floor(glob);
-	cast_all_rays(glob);
-	draw_minimap(glob);
-	put_player(glob);
-	end_point(glob, 30, glob->vue_angle);
-	draw_line(glob, glob->end_x, glob->end_y, 0xFF000000);
-	mlx_image_to_window(glob->mlx, glob->image, 0, 0);
+	if (glob->redraw)
+	{
+		printf("here\n");
+		draw_sky(glob);
+		draw_floor(glob);
+		cast_all_rays(glob);
+		draw_minimap(glob);
+		put_player(glob);
+		end_point(glob, 30, glob->vue_angle);
+		draw_line(glob, glob->end_x, glob->end_y, 0xFF000000);
+		glob->redraw = 0;
+	}
+	// put_gun(glob, "textures/pics/gun01.png");
+	// mlx_image_to_window(glob->mlx, glob->image, 0, 0);
+	// mlx_image_t *img = mlx_new_image(glob->mlx, WIDTH, HEIGHT);
+	// put_gun(glob, &img);
+	// mlx_image_to_window(glob->mlx, img, 0, 0);
 }
 
 void	init_player_pos(t_glob *glob, char *vue)
@@ -65,6 +98,7 @@ void	init_func(t_glob *glob)
 	glob->rays_angle = (float)(60 * (M_PI / 180));
 	glob->angle_incr = (float)(60 * (M_PI / 180)) / WIDTH; 
 	glob->rotation_speed = (float)(3 * (M_PI / 180));
+	glob->redraw = 1;
 	glob->num_rays = WIDTH;
 	glob->door_closed = 1;
 	// glob->rays_long = malloc (sizeof(float) * glob->width);

@@ -1,6 +1,6 @@
 CC = cc
 INCLUDES = cub3D.h
-CFLAGS =  -Wall -Wextra -Werror -I./includes -fsanitize=address -g
+CFLAGS =  -Wall -Wextra -Werror -I./includes -O3 -fsanitize=address -g
 GLFW = $(shell brew --prefix glfw)
 FRAMEWORKS = /Users/aouchaad/MLX42/build/libmlx42.a -Iinclude -lglfw -L $(GLFW)/lib/ -framework Cocoa -framework OpenGL -framework IOKit
 NAME = cub3D

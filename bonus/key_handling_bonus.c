@@ -6,7 +6,7 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 17:29:22 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/21 11:52:47 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:45:55 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	up_and_down(t_glob *glob)
 		{
 			glob->start_x += cosf(glob->vue_angle) * MOVE_SPEED;
 			glob->start_y += sinf(glob->vue_angle) * MOVE_SPEED;
+			glob->redraw = 1;
 		}
 	}
 	if (mlx_is_key_down(glob->mlx, MLX_KEY_S))
@@ -28,6 +29,7 @@ void	up_and_down(t_glob *glob)
 		{
 			glob->start_x -= cosf(glob->vue_angle) * MOVE_SPEED;
 			glob->start_y -= sinf(glob->vue_angle) * MOVE_SPEED;
+			glob->redraw = 1;
 		}
 	}
 }
@@ -41,7 +43,8 @@ void	left_and_right(t_glob *glob)
 			glob->start_x += cosf((glob->vue_angle + \
 			(90 * (M_PI / 180)))) * MOVE_SPEED;
 			glob->start_y += sinf((glob->vue_angle + \
-			(90 * (M_PI / 180)))) * MOVE_SPEED; 
+			(90 * (M_PI / 180)))) * MOVE_SPEED;
+			glob->redraw = 1;
 		}
 	}
 	if (mlx_is_key_down(glob->mlx, MLX_KEY_A))
@@ -51,7 +54,8 @@ void	left_and_right(t_glob *glob)
 			glob->start_x -= cosf((glob->vue_angle + \
 			(90 * (M_PI / 180)))) * MOVE_SPEED;
 			glob->start_y -= sinf((glob->vue_angle + \
-			(90 * (M_PI / 180)))) * MOVE_SPEED; 
+			(90 * (M_PI / 180)))) * MOVE_SPEED;
+			glob->redraw = 1;
 		}
 	}
 }
@@ -80,6 +84,19 @@ int	inside_door_block(t_glob *glob)
 	return (0);
 }
 
+// void	animated_gun(t_glob *glob)
+// {
+// 	mlx_delete_texture(glob->txtrs.gun_txtr);
+// 	glob->txtrs.gun_txtr = mlx_load_png("textures/pics/gun02.png");
+// 	free(glob->txtrs.path);
+// 	glob->txtrs.path = ft_strdup("textures/pics/gun02.png");
+// 	draw_map(glob);
+	
+// 	// put_gun(glob, "textures/pics/gun02.png");
+// 	// mlx_image_to_window(glob->mlx, glob->image, 0, 0);
+// 	// mlx_delete_texture(glob->txtrs.gun_txtr);
+// }
+
 void	key_handler(void *param)
 {
 	t_glob	*glob;
@@ -98,24 +115,35 @@ void	key_handler(void *param)
 		else if (mouse_posx < glob->old_mouse_posx)
 			glob->vue_angle -= (3 * (M_PI / 180));
 		glob->old_mouse_posx = mouse_posx;
+		glob->redraw = 1;
 		// glob->vue_angle -= acos((mouse_posx - glob->start_x) / distance(glob->start_x, mouse_posx, glob->start_y, mouse_posy));
 	}
+	// if (mlx_is_key_down(glob->mlx, MLX_KEY_SPACE))
+	// 	animated_gun(glob);
 	if (mlx_is_key_down(glob->mlx, MLX_KEY_Q) && !inside_door_block(glob))
 	{
 		if (glob->door_closed == 1)
 			glob->door_closed = 0;
 		else
 			glob->door_closed = 1;
+		glob->redraw = 1;
 	}
 	if (mlx_is_key_down(glob->mlx, MLX_KEY_RIGHT))
+	{
 		glob->vue_angle += glob->rotation_speed;
+		glob->redraw = 1;	
+	}
 	if (mlx_is_key_down(glob->mlx, MLX_KEY_LEFT))
+	{
 		glob->vue_angle -= glob->rotation_speed;
+		glob->redraw = 1;
+	}
 	up_and_down(glob);
 	left_and_right(glob);
 	escape_button(glob);
 	normalize_angle(&(glob->vue_angle));
-	mlx_delete_image(glob->mlx, glob->image);
-	glob->image = mlx_new_image(glob->mlx, WIDTH, HEIGHT); 
+	// mlx_delete_image(glob->mlx, glob->image);
+	// glob->image = mlx_new_image(glob->mlx, WIDTH, HEIGHT); 
 	draw_map(glob);
+	
 }

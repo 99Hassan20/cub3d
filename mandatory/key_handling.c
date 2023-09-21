@@ -6,7 +6,7 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 11:47:33 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/19 16:52:45 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:13:06 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	up_and_down(t_glob *glob)
 		{
 			glob->start_x += cosf(glob->vue_angle) * MOVE_SPEED;
 			glob->start_y += sinf(glob->vue_angle) * MOVE_SPEED;
+			glob->redraw = 1;
 		}
 	}
 	if (mlx_is_key_down(glob->mlx, MLX_KEY_S))
@@ -28,6 +29,7 @@ void	up_and_down(t_glob *glob)
 		{
 			glob->start_x -= cosf(glob->vue_angle) * MOVE_SPEED;
 			glob->start_y -= sinf(glob->vue_angle) * MOVE_SPEED;
+			glob->redraw = 1;
 		}
 	}
 }
@@ -41,7 +43,8 @@ void	left_and_right(t_glob *glob)
 			glob->start_x += cosf((glob->vue_angle + \
 			(90 * (M_PI / 180)))) * MOVE_SPEED;
 			glob->start_y += sinf((glob->vue_angle + \
-			(90 * (M_PI / 180)))) * MOVE_SPEED; 
+			(90 * (M_PI / 180)))) * MOVE_SPEED;
+			glob->redraw = 1;
 		}
 	}
 	if (mlx_is_key_down(glob->mlx, MLX_KEY_A))
@@ -51,7 +54,8 @@ void	left_and_right(t_glob *glob)
 			glob->start_x -= cosf((glob->vue_angle + \
 			(90 * (M_PI / 180)))) * MOVE_SPEED;
 			glob->start_y -= sinf((glob->vue_angle + \
-			(90 * (M_PI / 180)))) * MOVE_SPEED; 
+			(90 * (M_PI / 180)))) * MOVE_SPEED;
+			glob->redraw = 1;
 		}
 	}
 }
@@ -74,14 +78,18 @@ void	key_handler(void *param)
 
 	glob = param;
 	if (mlx_is_key_down(glob->mlx, MLX_KEY_RIGHT))
+	{
 		glob->vue_angle += glob->rotation_speed;
+		glob->redraw = 1;
+	}
 	if (mlx_is_key_down(glob->mlx, MLX_KEY_LEFT))
+	{
 		glob->vue_angle -= glob->rotation_speed;
+		glob->redraw = 1;
+	}
 	up_and_down(glob);
 	left_and_right(glob);
 	escape_button(glob);
 	normalize_angle(&(glob->vue_angle));
-	mlx_delete_image(glob->mlx, glob->image);
-	glob->image = mlx_new_image(glob->mlx, WIDTH, HEIGHT); 
 	draw_map(glob);
 }

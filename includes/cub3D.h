@@ -6,7 +6,7 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:05:02 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/20 17:15:05 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:40:22 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 
 # define BLOCK_ZIZE 64
 # define MAP_ELEMENTS 6
-# define MOVE_SPEED 20
-# define WIDTH 1400
-# define HEIGHT 800
+# define MOVE_SPEED 7
+# define WIDTH 1500
+# define HEIGHT 1200
 
 typedef struct s_textrs
 {
@@ -36,6 +36,7 @@ typedef struct s_textrs
 	mlx_texture_t	*no_texture;
 	mlx_texture_t	*closed_door;
 	mlx_texture_t	*opend_door;
+	mlx_texture_t	*gun_txtr;
 }	t_textrs;
 
 typedef struct s_element
@@ -103,6 +104,7 @@ typedef struct s_glob
 	int			door_closed;
 	float		rotation_speed;
 	float		start_x;
+	int			redraw;
 	float		start_y;
 	float		end_x;
 	float		end_y;
@@ -174,5 +176,6 @@ void			creat_textures(t_glob *glob);
 void			delete_textures(t_glob *glob);
 mlx_texture_t	*shoose_texture(t_ray ray, t_glob *glob);
 int				get_color_from_textrs(int x, int y, mlx_texture_t *texture);
+void	put_gun(t_glob *glob, mlx_image_t **img);
 
 #endif
