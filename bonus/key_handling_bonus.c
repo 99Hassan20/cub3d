@@ -6,7 +6,7 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 17:29:22 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/20 17:37:23 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/21 11:52:47 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,18 @@ void	escape_button(t_glob *glob)
 	}
 }
 
+int	inside_door_block(t_glob *glob)
+{
+	int	i;
+	int	j;
+
+	i = glob->start_y / BLOCK_ZIZE;
+	j = glob->start_x / BLOCK_ZIZE;
+	if (glob->map[i][j] == 'D')
+		return (1);
+	return (0);
+}
+
 void	key_handler(void *param)
 {
 	t_glob	*glob;
@@ -88,7 +100,7 @@ void	key_handler(void *param)
 		glob->old_mouse_posx = mouse_posx;
 		// glob->vue_angle -= acos((mouse_posx - glob->start_x) / distance(glob->start_x, mouse_posx, glob->start_y, mouse_posy));
 	}
-	if (mlx_is_key_down(glob->mlx, MLX_KEY_Q))
+	if (mlx_is_key_down(glob->mlx, MLX_KEY_Q) && !inside_door_block(glob))
 	{
 		if (glob->door_closed == 1)
 			glob->door_closed = 0;
