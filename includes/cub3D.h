@@ -6,7 +6,7 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:05:02 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/21 17:40:22 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/22 15:21:58 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define MAP_ELEMENTS 6
 # define MOVE_SPEED 7
 # define WIDTH 1500
-# define HEIGHT 1200
+# define HEIGHT 1050
 
 typedef struct s_textrs
 {
@@ -36,7 +36,7 @@ typedef struct s_textrs
 	mlx_texture_t	*no_texture;
 	mlx_texture_t	*closed_door;
 	mlx_texture_t	*opend_door;
-	mlx_texture_t	*gun_txtr;
+	mlx_texture_t	**gun_txtr;
 }	t_textrs;
 
 typedef struct s_element
@@ -99,6 +99,7 @@ typedef struct s_glob
 {
 	mlx_t		*mlx;
 	mlx_image_t	*image;
+	mlx_image_t *gun_img;
 	t_ray		*ray;
 	t_textrs	txtrs;
 	int			door_closed;
@@ -118,6 +119,7 @@ typedef struct s_glob
 	int			height;
 	char		*file_name;
 	int			map_height;
+	int			frames;
 	char		**map_info;
 	t_element	*elements;
 	t_color		floor;
@@ -176,6 +178,8 @@ void			creat_textures(t_glob *glob);
 void			delete_textures(t_glob *glob);
 mlx_texture_t	*shoose_texture(t_ray ray, t_glob *glob);
 int				get_color_from_textrs(int x, int y, mlx_texture_t *texture);
-void	put_gun(t_glob *glob, mlx_image_t **img);
+void	put_gun(t_glob *glob, int index);
+char	*generate_path(int i);
+void	animated_gun(void *param);
 
 #endif

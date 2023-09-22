@@ -6,30 +6,32 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 13:13:47 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/21 18:06:23 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/22 12:55:17 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	put_gun(t_glob *glob, mlx_image_t **img)
+void	put_gun(t_glob *glob, int index)
 {
 	int	i;
 	int	j;
 	int	color;
 
 	i = 0;
-	glob->txtrs.gun_txtr = mlx_load_png("textures/pics/gun01.png");
-	if (!glob->txtrs.gun_txtr)
-		error_log("faild to load gun image");
-	while (i < HEIGHT && i < (int)glob->txtrs.gun_txtr->height)
+	// if (glob->txtrs.gun_txtr[gun])
+		// mlx_delete_texture(glob->txtrs.gun_txtr);
+	// glob->txtrs.gun_txtr = mlx_load_png(path);
+	// if (!glob->txtrs.gun_txtr)
+		// error_log("faild to load gun image");
+	while (i < HEIGHT && i < (int)glob->txtrs.gun_txtr[index]->height)
 	{
 		j = 0;
-		while (j < WIDTH && j < (int)glob->txtrs.gun_txtr->width)
+		while (j < WIDTH && j < (int)glob->txtrs.gun_txtr[index]->width)
 		{
-			color = get_color_from_textrs(j, i, glob->txtrs.gun_txtr);
+			color = get_color_from_textrs(j, i, glob->txtrs.gun_txtr[index]);
 			if (color != 0)
-				mlx_put_pixel(*img, j, i, color);
+				mlx_put_pixel(glob->gun_img, j, i, color);
 			j++;
 		}
 		i++;
@@ -40,7 +42,6 @@ void	draw_map(t_glob *glob)
 {
 	if (glob->redraw)
 	{
-		printf("here\n");
 		draw_sky(glob);
 		draw_floor(glob);
 		cast_all_rays(glob);
@@ -53,7 +54,6 @@ void	draw_map(t_glob *glob)
 	// put_gun(glob, "textures/pics/gun01.png");
 	// mlx_image_to_window(glob->mlx, glob->image, 0, 0);
 	// mlx_image_t *img = mlx_new_image(glob->mlx, WIDTH, HEIGHT);
-	// put_gun(glob, &img);
 	// mlx_image_to_window(glob->mlx, img, 0, 0);
 }
 
@@ -81,6 +81,20 @@ void	init_player_pos(t_glob *glob, char *vue)
 	}
 }
 
+void	init_gun_textrs(t_glob *glob)
+{
+	int	i;
+
+	i = 0;
+	while (i < 52)
+	{
+		glob->txtrs.gun_txtr[i] = mlx_load_png(generate_path(i + 1));
+		if (!glob->txtrs.gun_txtr[i])
+			error_log("failed to load gun image");
+		i++;
+	}
+}
+
 void	init_func(t_glob *glob)
 {
 	char	vue;
@@ -95,14 +109,18 @@ void	init_func(t_glob *glob)
 	glob->start_x = 0;
 	glob->start_y = 0;
 	glob->vue_angle = 0;
+	glob->frames = 0;
 	glob->rays_angle = (float)(60 * (M_PI / 180));
 	glob->angle_incr = (float)(60 * (M_PI / 180)) / WIDTH; 
-	glob->rotation_speed = (float)(3 * (M_PI / 180));
+	glob->rotation_speed = (float)(2 * (M_PI / 180));
 	glob->redraw = 1;
 	glob->num_rays = WIDTH;
 	glob->door_closed = 1;
+	glob->txtrs.gun_txtr = NULL;
 	// glob->rays_long = malloc (sizeof(float) * glob->width);
 	glob->ray = malloc (sizeof(t_ray) * glob->num_rays);
+	glob->txtrs.gun_txtr = malloc (sizeof(mlx_texture_t) * 52);
+	init_gun_textrs(glob);
 	// creat_texture(glob);
 	// glob->ray_intesection = malloc(sizeof(char) * (glob->width + 1));
 	// glob->ray_intesection[glob->width] = '\0';
