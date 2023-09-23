@@ -16,7 +16,7 @@ PARSING_BONUS_SRCS= $(addprefix parsing_bonus/, map_checker.c read_map.c parser_
 MANDATORY_SRCS	=	$(addprefix mandatory/,  main.c utils.c textures_funcs.c moving_possibility.c utils2.c utils3.c horizontal_intersept.c vertical_intersept.c ray_casting.c draw_functions.c key_handling.c)
 # MANDATORY_OBJS = $(MANDATORY_SRCS:.c=.o)
 
-BONUS_SRCS	=	$(addprefix bonus/,  main_bonus.c utils_bonus.c utils2_bonus.c utils3_bonus.c horizontal_intersept_bonus.c vertical_intersept_bonus.c ray_casting_bonus.c draw_functions_bonus.c key_handling_bonus.c moving_possibility_bonus.c)
+BONUS_SRCS	=	$(addprefix bonus/,  main_bonus.c utils_bonus.c utils2_bonus.c utils3_bonus.c utils4_bonus.c utils5_bonus.c textures_funcs_bonus.c horizontal_intersept_bonus.c vertical_intersept_bonus.c ray_casting_bonus.c draw_functions_bonus.c key_handling_bonus.c moving_possibility_bonus.c)
 # BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 MANDATORY = $(MANDATORY_SRCS) $(PARSING_MANDATORY_SRCS) $(LIBFT_SRCS)

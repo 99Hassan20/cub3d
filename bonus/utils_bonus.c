@@ -6,7 +6,7 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 13:13:47 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/22 12:55:17 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/23 13:59:29 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@ void	put_gun(t_glob *glob, int index)
 	int	color;
 
 	i = 0;
-	// if (glob->txtrs.gun_txtr[gun])
-		// mlx_delete_texture(glob->txtrs.gun_txtr);
-	// glob->txtrs.gun_txtr = mlx_load_png(path);
-	// if (!glob->txtrs.gun_txtr)
-		// error_log("faild to load gun image");
 	while (i < HEIGHT && i < (int)glob->txtrs.gun_txtr[index]->height)
 	{
 		j = 0;
@@ -51,10 +46,6 @@ void	draw_map(t_glob *glob)
 		draw_line(glob, glob->end_x, glob->end_y, 0xFF000000);
 		glob->redraw = 0;
 	}
-	// put_gun(glob, "textures/pics/gun01.png");
-	// mlx_image_to_window(glob->mlx, glob->image, 0, 0);
-	// mlx_image_t *img = mlx_new_image(glob->mlx, WIDTH, HEIGHT);
-	// mlx_image_to_window(glob->mlx, img, 0, 0);
 }
 
 void	init_player_pos(t_glob *glob, char *vue)
@@ -83,14 +74,20 @@ void	init_player_pos(t_glob *glob, char *vue)
 
 void	init_gun_textrs(t_glob *glob)
 {
-	int	i;
+	int		i;
+	char	*path;
 
 	i = 0;
 	while (i < 52)
 	{
-		glob->txtrs.gun_txtr[i] = mlx_load_png(generate_path(i + 1));
+		path = generate_path(i + 1);
+		glob->txtrs.gun_txtr[i] = mlx_load_png(path);
+		free(path);
 		if (!glob->txtrs.gun_txtr[i])
-			error_log("failed to load gun image");
+		{
+			free(glob->txtrs.gun_txtr);
+			error_log("failed to load gun images");
+		}
 		i++;
 	}
 }
@@ -99,6 +96,8 @@ void	init_func(t_glob *glob)
 {
 	char	vue;
 
+	glob->txtrs.gun_txtr = malloc (sizeof(mlx_texture_t) * 52);
+	init_gun_textrs(glob);
 	glob->end_x = 0;
 	glob->end_y = 0;
 	glob->old_mouse_posx = -1;
@@ -108,7 +107,6 @@ void	init_func(t_glob *glob)
 	glob->mlx = NULL;
 	glob->start_x = 0;
 	glob->start_y = 0;
-	glob->vue_angle = 0;
 	glob->frames = 0;
 	glob->rays_angle = (float)(60 * (M_PI / 180));
 	glob->angle_incr = (float)(60 * (M_PI / 180)) / WIDTH; 
@@ -116,14 +114,7 @@ void	init_func(t_glob *glob)
 	glob->redraw = 1;
 	glob->num_rays = WIDTH;
 	glob->door_closed = 1;
-	glob->txtrs.gun_txtr = NULL;
-	// glob->rays_long = malloc (sizeof(float) * glob->width);
 	glob->ray = malloc (sizeof(t_ray) * glob->num_rays);
-	glob->txtrs.gun_txtr = malloc (sizeof(mlx_texture_t) * 52);
-	init_gun_textrs(glob);
-	// creat_texture(glob);
-	// glob->ray_intesection = malloc(sizeof(char) * (glob->width + 1));
-	// glob->ray_intesection[glob->width] = '\0';
 	init_player_pos(glob, &vue);
 	glob->start_x = (glob->start_x * BLOCK_ZIZE) + ((float)BLOCK_ZIZE / 2);
 	glob->start_y = (glob->start_y * BLOCK_ZIZE) + ((float)BLOCK_ZIZE / 2);

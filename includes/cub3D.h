@@ -6,7 +6,7 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:05:02 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/22 15:21:58 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/23 13:51:38 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,10 +170,6 @@ void			parse_info(t_glob *data);
 void			set_player_dir(char **dir, char *path);
 void			scene_parser(t_glob *data, char *file, int argc);
 void			free_func(t_glob *glob);
-int				get_r(int rgba);
-int				get_g(int rgba);
-int				get_b(int rgba);
-int				get_a(int rgba);
 void			creat_textures(t_glob *glob);
 void			delete_textures(t_glob *glob);
 mlx_texture_t	*shoose_texture(t_ray ray, t_glob *glob);
@@ -181,5 +177,12 @@ int				get_color_from_textrs(int x, int y, mlx_texture_t *texture);
 void	put_gun(t_glob *glob, int index);
 char	*generate_path(int i);
 void	animated_gun(void *param);
+void	delete_gun_textures(t_glob *glob);
+int	inside_door_block(t_glob *glob);
+void	rotation(t_glob *glob, int *mouse_posx, int *mouse_posy);
+void	open_and_close_door(t_glob *glob);
+void	gun_animation(t_glob *glob);
+void	take_the_vertical_distance(t_glob *glob, t_vars *vars, int i);
+int	check_door(t_glob *glob, float end_x, float end_y);
 
 #endif
