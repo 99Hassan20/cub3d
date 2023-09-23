@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene_checker.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 12:44:03 by hoigag            #+#    #+#             */
-/*   Updated: 2023/09/19 16:32:37 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/23 16:47:58 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ int	get_scene_elements(t_glob *data)
 	i = 0;
 	while (data->map_info[i])
 	{
-		pair = ft_split(data->map_info[i], ' ');
+		change_first_occurenc(&data->map_info[i], ' ', 27);
+		pair = ft_split(data->map_info[i], 27);
 		if (is_element_type_valid(pair[0]) && pair[1])
 		{
 			data->elements[i].type = ft_strdup(pair[0]);

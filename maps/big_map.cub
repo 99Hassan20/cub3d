@@ -1,4 +1,4 @@
-S /Users/aouchaad/Desktop/pics/redbrick.png
+S /Users/aouchaad/Desktop/pics/red brick.png   fverfdver
 
 EA /Users/aouchaad/Desktop/pics/eagle.png
 WE /Users/aouchaad/Desktop/pics/greystone.png
@@ -7,7 +7,7 @@ NO /Users/aouchaad/Desktop/pics/colorstone.png
 
 
 C 100,100,100
-F 255,0,0
+F 255,0,,,,,
 
 
 1111111111111111111111111111111111111111111

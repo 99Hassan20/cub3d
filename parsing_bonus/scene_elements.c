@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene_elements.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:36:02 by hoigag            #+#    #+#             */
-/*   Updated: 2023/09/18 13:09:36 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/23 13:50:03 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	set_color(t_color *color, char *str)
 {
 	char	**values;
 
+	if (!is_color_str_valid(str))
+		error_log("wrong color format");
 	values = ft_split(str, ',');
 	if (!values)
 		return ;

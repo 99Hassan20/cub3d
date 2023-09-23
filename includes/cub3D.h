@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:05:02 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/20 17:15:05 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/23 15:36:24 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <unistd.h> 
 # include "../libft/libft.h"
-# include "/Users/aouchaad/MLX42/include/MLX42/MLX42.h"
+# include "/Users/hoigag/MLX42/MLX42.h"
 # include <math.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -174,5 +174,7 @@ void			creat_textures(t_glob *glob);
 void			delete_textures(t_glob *glob);
 mlx_texture_t	*shoose_texture(t_ray ray, t_glob *glob);
 int				get_color_from_textrs(int x, int y, mlx_texture_t *texture);
-
+void			change_first_occurenc(char **str, char c, char new_c);
+int is_color_str_valid(char *str);
+int	check_doors(t_glob *data);
 #endif

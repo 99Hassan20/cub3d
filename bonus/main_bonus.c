@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:08:56 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/18 13:21:44 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/23 13:37:28 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ void	free_func(t_glob *glob)
 	free(glob->elements);
 }
 
-int	main(int ac, char **av)
+int	main(int __attribute__((unused))ac, char __attribute__((unused))**av)
 {
+    // printf("%s\n", info);
 	t_glob	glob;
 
 	scene_parser(&glob, av[1], ac);

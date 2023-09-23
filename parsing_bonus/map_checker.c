@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 19:19:55 by hoigag            #+#    #+#             */
-/*   Updated: 2023/09/19 19:00:29 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/09/21 12:52:45 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	has_valid_components(t_glob *data)
 		}
 		i++;
 	}
-	return (!(counter != 1 || doors > 1 || doors < 0));
+	return (counter == 1);
 }
 
 void	is_map_valid(t_glob *data)
