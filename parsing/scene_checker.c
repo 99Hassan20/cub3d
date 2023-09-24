@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 12:44:03 by hoigag            #+#    #+#             */
-/*   Updated: 2023/09/23 16:47:58 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/09/24 13:05:43 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ int	is_element_type_valid(char *element)
 	while (i < 6)
 	{
 		if (ft_strcmp(element, valid_elements[i]) == 0)
-			return (1);
-		else if (ft_strlen(element) == 1 && element[0] == valid_elements[i][0])
 			return (1);
 		i++;
 	}

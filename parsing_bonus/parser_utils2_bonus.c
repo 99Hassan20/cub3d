@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_utils2.c                                    :+:      :+:    :+:   */
+/*   parser_utils2_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:47:29 by hoigag            #+#    #+#             */
-/*   Updated: 2023/09/23 15:47:57 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/09/24 13:04:30 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	scene_parser(t_glob *data, char *file, int argc)
 	if (!data->elements)
 		return ;
 	if (!get_scene_elements(data)
-	|| !check_doors(data))
+		|| !check_doors(data))
 		error_log("Invalid scene elements");
 	is_map_valid(data);
 	parse_info(data);
