@@ -6,7 +6,7 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 11:26:34 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/19 16:56:38 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:15:34 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 void	draw_map(t_glob *glob)
 {
-	draw_sky(glob);
-	draw_floor(glob);
-	cast_all_rays(glob);
-	mlx_image_to_window(glob->mlx, glob->image, 0, 0);
+	if (glob->redraw)
+	{
+		draw_sky(glob);
+		draw_floor(glob);
+		cast_all_rays(glob);
+		glob->redraw = 0;
+	}
 }
 
 void	init_player_pos(t_glob *glob, char *vue)
@@ -52,6 +55,7 @@ void	init_func(t_glob *glob)
 	glob->height = (map_size(glob)) * BLOCK_ZIZE;
 	glob->image = NULL;
 	glob->mlx = NULL;
+	glob->redraw = 1;
 	glob->rays_angle = (float)(60 * (M_PI / 180));
 	glob->angle_incr = (float)(60 * (M_PI / 180)) / WIDTH; 
 	glob->rotation_speed = (float)(3 * (M_PI / 180));

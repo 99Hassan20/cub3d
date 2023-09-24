@@ -6,7 +6,7 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 17:31:40 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/18 13:23:05 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/23 14:00:11 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,31 +53,4 @@ int	ray_facing_right(float ray_angle)
 int	get_rgba(int r, int g, int b, int a)
 {
 	return (r << 24 | g << 16 | b << 8 | a);
-}
-
-int get_r(int rgba)
-{
-    // Move 3 bytes to the right and mask out the first byte.
-    return ((rgba >> 24) & 0xFF);
-}
-
-// Get the green channel.
-int get_g(int rgba)
-{
-    // Move 2 bytes to the right and mask out the first byte.
-    return ((rgba >> 16) & 0xFF);
-}
-
-// Get the blue channel.
-int get_b(int rgba)
-{
-    // Move 1 byte to the right and mask out the first byte.
-    return ((rgba >> 8) & 0xFF);
-}
-
-// Get the alpha channel.
-int get_a(int rgba)
-{
-    // Move 0 bytes to the right and mask out the first byte.
-    return (rgba & 0xFF);
 }

@@ -1,6 +1,6 @@
 CC = cc
 INCLUDES = cub3D.h
-CFLAGS =  -Wall -Wextra -Werror -I./includes -fsanitize=address -g
+CFLAGS =  -Wall -Wextra -Werror -I./includes -O3 -fsanitize=address -g
 GLFW = $(shell brew --prefix glfw)
 FRAMEWORKS = /Users/hoigag/MLX42/libmlx42.a -Iinclude -lglfw -L $(GLFW)/lib/ -framework Cocoa -framework OpenGL -framework IOKit
 NAME = cub3D
@@ -16,7 +16,7 @@ PARSING_BONUS_SRCS= $(addprefix parsing_bonus/, doors_checker.c parser_utils3.c 
 MANDATORY_SRCS	=	$(addprefix mandatory/,  main.c utils.c textures_funcs.c moving_possibility.c utils2.c utils3.c horizontal_intersept.c vertical_intersept.c ray_casting.c draw_functions.c key_handling.c)
 # MANDATORY_OBJS = $(MANDATORY_SRCS:.c=.o)
 
-BONUS_SRCS	=	$(addprefix bonus/, main_bonus.c utils_bonus.c utils2_bonus.c utils3_bonus.c horizontal_intersept_bonus.c vertical_intersept_bonus.c ray_casting_bonus.c draw_functions_bonus.c key_handling_bonus.c moving_possibility_bonus.c)
+BONUS_SRCS	=	$(addprefix bonus/,  main_bonus.c utils_bonus.c utils2_bonus.c utils3_bonus.c utils4_bonus.c utils5_bonus.c textures_funcs_bonus.c horizontal_intersept_bonus.c vertical_intersept_bonus.c ray_casting_bonus.c draw_functions_bonus.c key_handling_bonus.c moving_possibility_bonus.c)
 # BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 MANDATORY = $(MANDATORY_SRCS) $(PARSING_MANDATORY_SRCS) $(LIBFT_SRCS)

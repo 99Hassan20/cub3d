@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:05:02 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/23 15:36:24 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/09/24 10:07:15 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 
 # define BLOCK_ZIZE 64
 # define MAP_ELEMENTS 6
-# define MOVE_SPEED 20
-# define WIDTH 1400
-# define HEIGHT 800
+# define MOVE_SPEED 7
+# define WIDTH 1500
+# define HEIGHT 1050
 
 typedef struct s_textrs
 {
@@ -36,6 +36,7 @@ typedef struct s_textrs
 	mlx_texture_t	*no_texture;
 	mlx_texture_t	*closed_door;
 	mlx_texture_t	*opend_door;
+	mlx_texture_t	**gun_txtr;
 }	t_textrs;
 
 typedef struct s_element
@@ -98,11 +99,13 @@ typedef struct s_glob
 {
 	mlx_t		*mlx;
 	mlx_image_t	*image;
+	mlx_image_t *gun_img;
 	t_ray		*ray;
 	t_textrs	txtrs;
 	int			door_closed;
 	float		rotation_speed;
 	float		start_x;
+	int			redraw;
 	float		start_y;
 	float		end_x;
 	float		end_y;
@@ -116,6 +119,7 @@ typedef struct s_glob
 	int			height;
 	char		*file_name;
 	int			map_height;
+	int			frames;
 	char		**map_info;
 	t_element	*elements;
 	t_color		floor;
@@ -166,10 +170,6 @@ void			parse_info(t_glob *data);
 void			set_player_dir(char **dir, char *path);
 void			scene_parser(t_glob *data, char *file, int argc);
 void			free_func(t_glob *glob);
-int				get_r(int rgba);
-int				get_g(int rgba);
-int				get_b(int rgba);
-int				get_a(int rgba);
 void			creat_textures(t_glob *glob);
 void			delete_textures(t_glob *glob);
 mlx_texture_t	*shoose_texture(t_ray ray, t_glob *glob);
@@ -177,4 +177,15 @@ int				get_color_from_textrs(int x, int y, mlx_texture_t *texture);
 void			change_first_occurenc(char **str, char c, char new_c);
 int is_color_str_valid(char *str);
 int	check_doors(t_glob *data);
+void	put_gun(t_glob *glob, int index);
+char	*generate_path(int i);
+void	animated_gun(void *param);
+void	delete_gun_textures(t_glob *glob);
+int	inside_door_block(t_glob *glob);
+void	rotation(t_glob *glob, int *mouse_posx, int *mouse_posy);
+void	open_and_close_door(t_glob *glob);
+void	gun_animation(t_glob *glob);
+void	take_the_vertical_distance(t_glob *glob, t_vars *vars, int i);
+int	check_door(t_glob *glob, float end_x, float end_y);
+
 #endif
