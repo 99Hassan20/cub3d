@@ -6,11 +6,11 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 17:31:40 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/23 14:00:11 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:44:10 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../includes/cub3D_bonus.h"
 
 int	longest_line(t_glob *glob)
 {

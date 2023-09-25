@@ -6,11 +6,11 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 13:13:47 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/23 13:59:29 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:44:06 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../includes/cub3D_bonus.h"
 
 void	put_gun(t_glob *glob, int index)
 {

@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene_elements.c                                   :+:      :+:    :+:   */
+/*   scene_elements_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:36:02 by hoigag            #+#    #+#             */
-/*   Updated: 2023/09/18 13:09:36 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:45:00 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../includes/cub3D_bonus.h"
 
 void	set_color(t_color *color, char *str)
 {
 	char	**values;
 
+	if (!is_color_str_valid(str))
+		error_log("wrong color format");
 	values = ft_split(str, ',');
 	if (!values)
 		return ;

@@ -6,11 +6,11 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:53:22 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/23 13:55:03 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:43:59 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../includes/cub3D_bonus.h"
 
 void	draw_wall(t_glob *glob, float wall_height, t_ray ray)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 14:43:33 by hoigag            #+#    #+#             */
-/*   Updated: 2023/09/18 13:09:11 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/23 17:07:34 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	is_empty_line(char *line)
 	char	*new_line;
 
 	new_line = ft_strtrim(line, " \t\n");
+	if (!new_line)
+		return (1);
 	if (!new_line[0])
 	{
 		free(new_line);

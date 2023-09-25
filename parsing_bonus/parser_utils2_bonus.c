@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_utils2.c                                    :+:      :+:    :+:   */
+/*   parser_utils2_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:47:29 by hoigag            #+#    #+#             */
-/*   Updated: 2023/09/18 13:09:16 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:44:46 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../includes/cub3D_bonus.h"
 
 void	scene_parser(t_glob *data, char *file, int argc)
 {
@@ -31,7 +31,8 @@ void	scene_parser(t_glob *data, char *file, int argc)
 	data->elements = malloc(sizeof(t_element) * 7);
 	if (!data->elements)
 		return ;
-	if (!get_scene_elements(data))
+	if (!get_scene_elements(data)
+		|| !check_doors(data))
 		error_log("Invalid scene elements");
 	is_map_valid(data);
 	parse_info(data);

@@ -6,11 +6,11 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:34:46 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/18 13:22:47 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:44:22 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../includes/cub3D_bonus.h"
 
 static void	look_for_wall_hit(t_glob *glob, t_vars *vars, t_ray *ray)
 {

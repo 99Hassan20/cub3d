@@ -6,11 +6,11 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 13:49:31 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/23 13:51:17 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:44:19 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../includes/cub3D_bonus.h"
 
 int	check_door(t_glob *glob, float end_x, float end_y)
 {

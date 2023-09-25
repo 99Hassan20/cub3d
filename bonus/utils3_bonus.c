@@ -6,11 +6,11 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 17:35:50 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/18 13:22:55 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:44:13 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../includes/cub3D_bonus.h"
 
 int	map_size(t_glob *glob)
 {

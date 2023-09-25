@@ -6,11 +6,11 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:49:19 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/23 14:02:50 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:44:16 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../includes/cub3D_bonus.h"
 
 int	inside_door_block(t_glob *glob)
 {

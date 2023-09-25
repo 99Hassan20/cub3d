@@ -6,11 +6,11 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:46:54 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/23 13:47:11 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:44:04 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../includes/cub3D_bonus.h"
 
 mlx_texture_t	*shoose_texture(t_ray ray, t_glob *glob)
 {

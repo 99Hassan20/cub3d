@@ -6,11 +6,11 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:08:56 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/23 12:31:45 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/25 13:08:55 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../includes/cub3D_bonus.h"
 
 void	free_func(t_glob *glob)
 {
@@ -42,12 +42,22 @@ void	delete_gun_textures(t_glob *glob)
 	}
 }
 
+void	mini_map_limit(t_glob *glob)
+{
+	if ((glob->height * 0.15) > HEIGHT / 4 || (glob->width * 0.15) > WIDTH / 4)
+	{
+		free_func(glob);
+		error_log("map is too big");
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_glob	glob;
 
 	scene_parser(&glob, av[1], ac);
 	init_func(&glob);
+	mini_map_limit(&glob);
 	creat_textures(&glob);
 	glob.mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false); 
 	glob.image = mlx_new_image(glob.mlx, WIDTH, HEIGHT);

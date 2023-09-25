@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_checker.c                                      :+:      :+:    :+:   */
+/*   map_checker_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 19:19:55 by hoigag            #+#    #+#             */
-/*   Updated: 2023/09/19 19:00:29 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/09/25 12:44:41 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../includes/cub3D_bonus.h"
 
 int	check_surroundings(t_glob *data, int i, int j)
 {
@@ -87,7 +87,7 @@ int	has_valid_components(t_glob *data)
 		}
 		i++;
 	}
-	return (!(counter != 1 || doors > 1 || doors < 0));
+	return (counter == 1);
 }
 
 void	is_map_valid(t_glob *data)

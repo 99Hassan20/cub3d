@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene_checker.c                                    :+:      :+:    :+:   */
+/*   scene_checker_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 12:44:03 by hoigag            #+#    #+#             */
-/*   Updated: 2023/09/19 16:32:37 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:44:55 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../includes/cub3D_bonus.h"
 
 int	is_file_name_valid(char *file_name)
 {
@@ -42,8 +42,6 @@ int	is_element_type_valid(char *element)
 	{
 		if (ft_strcmp(element, valid_elements[i]) == 0)
 			return (1);
-		else if (ft_strlen(element) == 1 && element[0] == valid_elements[i][0])
-			return (1);
 		i++;
 	}
 	return (0);
@@ -57,7 +55,8 @@ int	get_scene_elements(t_glob *data)
 	i = 0;
 	while (data->map_info[i])
 	{
-		pair = ft_split(data->map_info[i], ' ');
+		change_first_occurenc(&data->map_info[i], ' ', 27);
+		pair = ft_split(data->map_info[i], 27);
 		if (is_element_type_valid(pair[0]) && pair[1])
 		{
 			data->elements[i].type = ft_strdup(pair[0]);
