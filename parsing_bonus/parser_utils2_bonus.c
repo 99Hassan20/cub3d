@@ -3,14 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils2_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:47:29 by hoigag            #+#    #+#             */
-/*   Updated: 2023/09/25 12:44:46 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/10/04 17:51:11 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D_bonus.h"
+
+int	check_duplicate_elements(t_glob *data)
+{
+	int	i;
+	int	j;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (data->elements[i].type)
+	{
+		j = 0;
+		while (data->elements[j].type)
+		{
+			if (ft_strcmp(data->elements[i].type, data->elements[j].type) == 0)
+				count++;
+			j++;
+		}
+		if (count > 1)
+			return (1);
+		count = 0;
+		i++;
+	}
+	return (0);
+}
 
 void	scene_parser(t_glob *data, char *file, int argc)
 {
@@ -34,6 +59,8 @@ void	scene_parser(t_glob *data, char *file, int argc)
 	if (!get_scene_elements(data)
 		|| !check_doors(data))
 		error_log("Invalid scene elements");
+	if (check_duplicate_elements(data))
+		error_log("Duplicate scene elements");
 	is_map_valid(data);
 	parse_info(data);
 }

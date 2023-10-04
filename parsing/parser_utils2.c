@@ -6,11 +6,36 @@
 /*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:47:29 by hoigag            #+#    #+#             */
-/*   Updated: 2023/09/23 15:46:20 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/10/04 17:50:19 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+int	check_duplicate_elements(t_glob *data)
+{
+	int	i;
+	int	j;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (data->elements[i].type)
+	{
+		j = 0;
+		while (data->elements[j].type)
+		{
+			if (ft_strcmp(data->elements[i].type, data->elements[j].type) == 0)
+				count++;
+			j++;
+		}
+		if (count > 1)
+			return (1);
+		count = 0;
+		i++;
+	}
+	return (0);
+}
 
 void	scene_parser(t_glob *data, char *file, int argc)
 {
@@ -33,6 +58,8 @@ void	scene_parser(t_glob *data, char *file, int argc)
 		return ;
 	if (!get_scene_elements(data))
 		error_log("Invalid scene elements");
+	if (check_duplicate_elements(data))
+		error_log("Duplicate elements");
 	is_map_valid(data);
 	parse_info(data);
 }
