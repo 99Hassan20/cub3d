@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handling_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 17:29:22 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/10/06 11:55:37 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/10/06 17:28:44 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	escape_button(t_glob *glob)
 		mlx_close_window(glob->mlx);
 		mlx_terminate(glob->mlx);
 		free_func(glob);
+		system("leaks cub3D_bonus");
 		exit(0);
 	}
 }

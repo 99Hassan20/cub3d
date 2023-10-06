@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures_funcs_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:46:54 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/10/06 12:00:56 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/10/06 17:29:07 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	delete_textures(t_glob *glob)
 	mlx_delete_texture(glob->txtrs.we_texture);
 	mlx_delete_texture(glob->txtrs.no_texture);
 	mlx_delete_texture(glob->txtrs.so_texture);
+	delete_gun_textures(glob);
 }
 
 int	get_color_from_textrs(int x, int y, mlx_texture_t *texture)
