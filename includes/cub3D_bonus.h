@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:05:02 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/10/05 13:58:42 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/10/06 12:40:22 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <unistd.h> 
 # include "../libft/libft.h"
-# include "/Users/hoigag/MLX42/MLX42.h"
+# include "/Users/aouchaad/MLX42/include/MLX42/MLX42.h"
 # include <math.h>
 # include <stdlib.h>
 # include <stdio.h>
