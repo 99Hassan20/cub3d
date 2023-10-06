@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moving_possibility.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:14:07 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/21 18:16:10 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:27:23 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ int	stay_away_from_wall(t_glob *glob, float player_x, float player_y)
 	i = player_y / (BLOCK_ZIZE);
 	if (glob->map[(int)i][(int)j] == '1')
 		return (0);
-	if (glob->map[(int)(player_y + 1) / BLOCK_ZIZE][(int)j] == '1' && \
-			glob->map[(int)i][(int)(player_x + 1) / BLOCK_ZIZE] == '1')
+	i = (player_y + 3) / BLOCK_ZIZE;
+	if (glob->map[(int)i][(int)j] == '1')
 		return (0);
-	if (glob->map[(int)(player_y - 1) / BLOCK_ZIZE][(int)j] == '1' && \
-			glob->map[(int)i][(int)(player_x - 1) / BLOCK_ZIZE] == '1')
+	i = (player_y - 3) / BLOCK_ZIZE;
+	if (glob->map[(int)i][(int)j] == '1')
 		return (0);
-	if (glob->map[(int)(player_y + 1) / BLOCK_ZIZE][(int)j] == '1' && \
-			glob->map[(int)i][(int)(player_x - 1) / BLOCK_ZIZE] == '1')
+	j = (player_x + 3) / BLOCK_ZIZE;
+	if (glob->map[(int)i][(int)j] == '1')
 		return (0);
-	if (glob->map[(int)(player_y - 1) / BLOCK_ZIZE][(int)j] == '1' && \
-			glob->map[(int)i][(int)(player_x + 1) / BLOCK_ZIZE] == '1')
+	j = (player_x - 3) / BLOCK_ZIZE;
+	if (glob->map[(int)i][(int)j] == '1')
 		return (0);
 	return (1);
 }

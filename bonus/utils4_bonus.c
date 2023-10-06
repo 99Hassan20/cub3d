@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils4_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:49:19 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/25 12:44:16 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:03:04 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,21 @@ void	animated_gun(void *param)
 
 void	open_and_close_door(t_glob *glob)
 {
-	if (mlx_is_key_down(glob->mlx, MLX_KEY_Q) && !inside_door_block(glob))
+	static int	i;
+
+	if (mlx_is_key_down(glob->mlx, MLX_KEY_SPACE) && !inside_door_block(glob))
 	{
-		if (glob->door_closed == 1)
+		i++;
+		if (i % 2 == 0 && glob->door_closed == 1)
+		{
 			glob->door_closed = 0;
-		else
+			i = 0;
+		}
+		else if (i % 2 != 0 && glob->door_closed == 0)
+		{
 			glob->door_closed = 1;
+			i = 0;
+		}
 		glob->redraw = 1;
 	}
 }
@@ -76,6 +85,6 @@ void	gun_animation(t_glob *glob)
 		mlx_image_to_window(glob->mlx, glob->gun_img, 0, 0);
 		glob->frames++;
 	}
-	if (mlx_is_key_down(glob->mlx, MLX_KEY_SPACE))
+	if (mlx_is_mouse_down(glob->mlx, MLX_MOUSE_BUTTON_LEFT))
 		animated_gun(glob);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene_checker_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 12:44:03 by hoigag            #+#    #+#             */
-/*   Updated: 2023/09/25 12:44:55 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/10/06 12:16:45 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	get_scene_elements(t_glob *data)
 		if (is_element_type_valid(pair[0]) && pair[1])
 		{
 			data->elements[i].type = ft_strdup(pair[0]);
-			data->elements[i].value = ft_strdup(pair[1]);
+			data->elements[i].value = ft_strtrim(pair[1], " \t\n");
 		}
 		else
 		{

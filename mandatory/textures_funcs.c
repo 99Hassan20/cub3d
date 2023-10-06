@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures_funcs.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:38:35 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/23 12:57:35 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/10/06 12:01:17 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ mlx_texture_t	*shoose_texture(t_ray ray, t_glob *glob)
 		return (glob->txtrs.we_texture);
 	else if (ray.first_hit == '1' && (ray.ray_angle >= 0 && \
 			ray.ray_angle <= M_PI))
-		return (glob->txtrs.no_texture);
-	return (glob->txtrs.so_texture);
+		return (glob->txtrs.so_texture);
+	return (glob->txtrs.no_texture);
 }
 
 int	get_color_from_textrs(int x, int y, mlx_texture_t *texture)

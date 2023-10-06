@@ -1,6 +1,6 @@
 CC = cc
-INCLUDES = cub3D.h
-CFLAGS =  -Wall -Wextra -Werror -I./includes -O3 -fsanitize=address -g
+INCLUDES = includes/cub3D.h
+CFLAGS =  -Wall -Wextra -Werror -I./includes -O3 #-fsanitize=address -g
 GLFW = $(shell brew --prefix glfw)
 FRAMEWORKS = /Users/hoigag/MLX42/libmlx42.a -Iinclude -lglfw -L $(GLFW)/lib/ -framework Cocoa -framework OpenGL -framework IOKit
 NAME = cub3D
@@ -27,6 +27,8 @@ BONUS_OBJS = $(BONUS:.c=.o)
 
 all: $(NAME)
 
+# %.o: %.c $(INCLUDES) includes/cub3D_bonus.h
+# 	$(CC) $(CFLAGS) -c $^
 
 $(NAME): $(MANDATORY_OBJS)
 	make -C libft bonus

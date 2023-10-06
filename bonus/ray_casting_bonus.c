@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:53:22 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/25 12:43:59 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:54:00 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	draw_wall(t_glob *glob, float wall_height, t_ray ray)
 		vars.starty, get_color_from_textrs(vars.textur_x, vars.textur_y, \
 		shoose_texture(ray, glob)));
 		vars.starty++;
-		vars.textur_y += vars.textur_inc;
 	}
 }
 

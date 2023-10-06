@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils3_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 17:35:50 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/25 12:44:13 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:53:46 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ int	map_size(t_glob *glob)
 void	wich_vue(char vue, t_glob *glob)
 {
 	if (vue == 'W')
-		glob->vue_angle = 0;
-	else if (vue == 'N')
-		glob->vue_angle = M_PI_2;
-	else if (vue == 'S')
-		glob->vue_angle = (3 * M_PI_2);
-	else if (vue == 'E')
 		glob->vue_angle = M_PI;
+	else if (vue == 'N')
+		glob->vue_angle = 3 * M_PI_2;
+	else if (vue == 'S')
+		glob->vue_angle = M_PI_2;
+	else if (vue == 'E')
+		glob->vue_angle = 0;
 }
 
 void	end_point(t_glob *glob, float ray_long, float angle)

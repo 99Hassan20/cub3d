@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures_funcs_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:46:54 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/25 12:44:04 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/10/06 12:00:56 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ mlx_texture_t	*shoose_texture(t_ray ray, t_glob *glob)
 		return (glob->txtrs.we_texture);
 	else if (ray.first_hit == '1'
 		&& (ray.ray_angle >= 0 && ray.ray_angle <= M_PI))
-		return (glob->txtrs.no_texture);
-	return (glob->txtrs.so_texture);
+		return (glob->txtrs.so_texture);
+	return (glob->txtrs.no_texture);
 }
 
 void	creat_textures(t_glob *glob)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:08:56 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/25 13:08:55 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:54:58 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,17 @@ void	mini_map_limit(t_glob *glob)
 	}
 }
 
+void	terminator(t_glob *glob)
+{
+	delete_textures(glob);
+	delete_gun_textures(glob);
+	mlx_delete_image(glob->mlx, glob->image);
+	mlx_delete_image(glob->mlx, glob->gun_img);
+	mlx_close_window(glob->mlx);
+	mlx_terminate(glob->mlx);
+	free_func(glob);
+}
+
 int	main(int ac, char **av)
 {
 	t_glob	glob;
@@ -68,12 +79,6 @@ int	main(int ac, char **av)
 	mlx_image_to_window(glob.mlx, glob.gun_img, 0, 0);
 	mlx_loop_hook(glob.mlx, key_handler, &glob);
 	mlx_loop(glob.mlx);
-	delete_textures(&glob);
-	delete_gun_textures(&glob);
-	mlx_delete_image(glob.mlx, glob.image);
-	mlx_delete_image(glob.mlx, glob.gun_img);
-	mlx_close_window(glob.mlx);
-	mlx_terminate(glob.mlx);
-	free_func(&glob);
+	terminator(&glob);
 	return (0);
 }
