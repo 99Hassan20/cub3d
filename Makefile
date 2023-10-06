@@ -27,16 +27,17 @@ BONUS_OBJS = $(BONUS:.c=.o)
 
 all: $(NAME)
 
-# %.o: %.c $(INCLUDES) includes/cub3D_bonus.h
-# 	$(CC) $(CFLAGS) -c $^
 
 $(NAME): $(MANDATORY_OBJS)
 	make -C libft bonus
 	$(CC) $(CFLAGS) $(MANDATORY_OBJS) -L./libft -lft  ${FRAMEWORKS} -o $@
 
+%.o: %.c $(INCLUDES) includes/cub3D_bonus.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
 bonus: $(NAME_BONUS)
 
-$(NAME_BONUS): $(BONUS_OBJS)
+$(NAME_BONUS): $(BONUS_OBJS) 
 	make -C libft bonus
 	$(CC) $(CFLAGS) $(BONUS_OBJS) -L./libft -lft  ${FRAMEWORKS} -o $@
 

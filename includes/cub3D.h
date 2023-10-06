@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 13:18:37 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/10/06 12:09:11 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/10/06 12:32:29 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,6 @@ int				is_empty_line(char *line);
 int				get_scene_elements(t_glob *data);
 int				get_2d_arr_size(char **arr);
 int				ft_atoi_v2(const char *str);
-int				get_color_from_textrs(int x, int y, mlx_texture_t *texture);//asdfasf
-int				is_color_str_valid(char *str);
+int				get_color_from_textrs(int x, int y, mlx_texture_t *texture);
 
 #endif
