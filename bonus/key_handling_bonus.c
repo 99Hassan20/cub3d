@@ -6,7 +6,7 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 17:29:22 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/10/06 17:28:44 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:08:38 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,12 @@ void	escape_button(t_glob *glob)
 	if (mlx_is_key_down(glob->mlx, MLX_KEY_ESCAPE))
 	{
 		delete_textures(glob);
+		delete_gun_textures(glob);
 		mlx_delete_image(glob->mlx, glob->image);
 		mlx_delete_image(glob->mlx, glob->gun_img);
 		mlx_close_window(glob->mlx);
 		mlx_terminate(glob->mlx);
 		free_func(glob);
-		system("leaks cub3D_bonus");
 		exit(0);
 	}
 }
