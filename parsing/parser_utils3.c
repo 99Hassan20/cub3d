@@ -6,7 +6,7 @@
 /*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:34:49 by hoigag            #+#    #+#             */
-/*   Updated: 2023/09/24 12:59:34 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/10/09 16:41:19 by hoigag           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	change_first_occurenc(char **str, char c, char new_c)
 	i = 0;
 	while ((*str)[i])
 	{
-		if ((*str)[i] == c)
+		if ((*str)[i] == c || (*str)[i] == '\t')
 		{
 			(*str)[i] = new_c;
 			break ;
