@@ -6,7 +6,7 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:08:56 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/10/09 17:09:30 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:03:47 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	delete_gun_textures(t_glob *glob)
 	int	i;
 
 	i = 0;
-	while (i < 52)
+	while (i < 52 && glob->txtrs.gun_txtr[i] != NULL)
 	{
 		mlx_delete_texture(glob->txtrs.gun_txtr[i]);
 		i++;
@@ -47,6 +47,7 @@ void	mini_map_limit(t_glob *glob)
 	if ((glob->height * 0.15) > HEIGHT / 4 || (glob->width * 0.15) > WIDTH / 4)
 	{
 		free_func(glob);
+		delete_gun_textures(glob);
 		error_log("map is too big");
 	}
 }

@@ -1,10 +1,9 @@
-SO		textures/pics/colorstone.png
-EA textures/pics/eagle.png
+SO		textures/pics/eagle.png
+EA textures/pics/colorstone.png
 WE textures/pics/greystone.png
 NO                  textures/pics/redbrick.png
 C 100,100,200       
 F 202,220,120
-
 111111111111111111111111111111111
 111111111000000000110000000000001
 1111111101D1000001100000010000001

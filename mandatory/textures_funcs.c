@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures_funcs.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoigag <hoigag@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:38:35 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/10/06 12:01:17 by hoigag           ###   ########.fr       */
+/*   Updated: 2023/10/09 18:02:14 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	creat_textures(t_glob *glob)
 	if (!glob->txtrs.ea_texture || !glob->txtrs.we_texture || \
 		!glob->txtrs.so_texture || !glob->txtrs.no_texture)
 	{
+		delete_textures(glob);
 		free_func(glob);
 		error_log("fail to load png file");
 	}
@@ -52,8 +53,12 @@ void	creat_textures(t_glob *glob)
 
 void	delete_textures(t_glob *glob)
 {
-	mlx_delete_texture(glob->txtrs.ea_texture);
-	mlx_delete_texture(glob->txtrs.we_texture);
-	mlx_delete_texture(glob->txtrs.no_texture);
-	mlx_delete_texture(glob->txtrs.so_texture);
+	if (glob->txtrs.ea_texture)
+		mlx_delete_texture(glob->txtrs.ea_texture);
+	if (glob->txtrs.we_texture)
+		mlx_delete_texture(glob->txtrs.we_texture);
+	if (glob->txtrs.no_texture)
+		mlx_delete_texture(glob->txtrs.no_texture);
+	if (glob->txtrs.so_texture)
+		mlx_delete_texture(glob->txtrs.so_texture);
 }

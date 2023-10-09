@@ -6,7 +6,7 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 12:46:54 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/10/09 17:09:33 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:57:15 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	creat_textures(t_glob *glob)
 		!glob->txtrs.so_texture || !glob->txtrs.no_texture || \
 		!glob->txtrs.closed_door || !glob->txtrs.opend_door)
 	{
+		delete_textures(glob);
 		delete_gun_textures(glob);
 		free_func(glob);
 		error_log("fail to load png file");
@@ -53,12 +54,18 @@ void	creat_textures(t_glob *glob)
 
 void	delete_textures(t_glob *glob)
 {
-	mlx_delete_texture(glob->txtrs.ea_texture);
-	mlx_delete_texture(glob->txtrs.we_texture);
-	mlx_delete_texture(glob->txtrs.no_texture);
-	mlx_delete_texture(glob->txtrs.so_texture);
-	mlx_delete_texture(glob->txtrs.closed_door);
-	mlx_delete_texture(glob->txtrs.opend_door);
+	if (glob->txtrs.ea_texture)
+		mlx_delete_texture(glob->txtrs.ea_texture);
+	if (glob->txtrs.we_texture)
+		mlx_delete_texture(glob->txtrs.we_texture);
+	if (glob->txtrs.no_texture)
+		mlx_delete_texture(glob->txtrs.no_texture);
+	if (glob->txtrs.so_texture)
+		mlx_delete_texture(glob->txtrs.so_texture);
+	if (glob->txtrs.closed_door)
+		mlx_delete_texture(glob->txtrs.closed_door);
+	if (glob->txtrs.opend_door)
+		mlx_delete_texture(glob->txtrs.opend_door);
 }
 
 int	get_color_from_textrs(int x, int y, mlx_texture_t *texture)

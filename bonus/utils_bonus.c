@@ -6,7 +6,7 @@
 /*   By: aouchaad <aouchaad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 13:13:47 by aouchaad          #+#    #+#             */
-/*   Updated: 2023/09/25 12:44:06 by aouchaad         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:41:14 by aouchaad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ void	init_gun_textrs(t_glob *glob)
 		free(path);
 		if (!glob->txtrs.gun_txtr[i])
 		{
+			glob->txtrs.gun_txtr[i] = NULL;
+			delete_gun_textures(glob);
 			free(glob->txtrs.gun_txtr);
 			error_log("failed to load gun images");
 		}
